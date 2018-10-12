@@ -25,6 +25,7 @@
 #define IntFeatPair_WORKBENCH_H
 
 #include <Gui/Workbench.h>
+#include <Gui/Application.h>
 
 namespace IntFeatPairGui {
 
@@ -36,9 +37,21 @@ public:
     Workbench();
     virtual ~Workbench();
 
+	/** Run some actions when the workbench gets activated. */
+	virtual void activated();
+	/** Run some actions when the workbench gets deactivated. */
+	virtual void deactivated();
+
 protected:
     Gui::MenuItem* setupMenuBar() const;
     Gui::ToolBarItem* setupToolBars() const;
+	Gui::ToolBarItem* setupCommandBars() const;
+
+private:
+	void slotActiveDocument(const Gui::Document&);
+	void slotFinishRestoreDocument(const App::Document&);
+	void slotNewDocument(const App::Document&);
+	void slotDeleteDocument(const App::Document&);
 };
 
 } // namespace IntFeatPairGui
