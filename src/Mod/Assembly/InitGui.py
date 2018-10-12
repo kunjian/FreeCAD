@@ -43,6 +43,7 @@ class AssemblyWorkbench ( Workbench ):
 		# load the module
 		import AssemblyGui
 		import Assembly
+
 	def GetClassName(self):
 		return "AssemblyGui::Workbench"
 
